@@ -6,7 +6,11 @@ target 'Sports' do
   use_frameworks!
 
    pod 'Alamofire', '~> 4.0'
+<<<<<<< Updated upstream
 pod 'Kingfisher', '~> 5.0'
+=======
+   pod 'Kingfisher', '~> 5.0'
+>>>>>>> Stashed changes
 
   target 'SportsTests' do
     inherit! :search_paths
