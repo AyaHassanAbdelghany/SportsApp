@@ -7,11 +7,12 @@
 //
 
 import Foundation
-struct ListOfTeams : Codable {
+
+struct ListOfTeams : Decodable {
     var teams : [Team]?
 }
 
-struct Team : Codable {
+struct Team : Decodable {
     
     var strTeam : String?
     var intFormedYear, strLeague, strStadium, strStadiumThumb, strDescriptionEN, strFacebook, strTwitter, strTeamBadge, strTeamJersey : String?

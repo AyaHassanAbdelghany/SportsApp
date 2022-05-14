@@ -9,15 +9,14 @@
 import Foundation
 
 
-// MARK: - Welcome
-struct AllEvents: Codable {
-    var event: [Event]?
+struct AllEvents: Decodable {
+    var events: [Event]?
 }
 
 // MARK: - Event
-struct Event: Codable {
+struct Event: Decodable {
     var idEvent: String?
-    var idAPIfootball, strEvent, strEventAlternate, strFilename: String?
+    var idAPIfootball, strEvent, strEventAlternate,strThumb, strFilename: String?
     var strSport, idLeague, strLeague, strSeason: String?
     var strHomeTeam, strAwayTeam, intHomeScore, intRound: String?
     var intAwayScore: String?

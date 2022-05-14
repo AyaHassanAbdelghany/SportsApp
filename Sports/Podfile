@@ -6,6 +6,7 @@ target 'Sports' do
   use_frameworks!
 
    pod 'Alamofire', '~> 4.0'
+pod 'Kingfisher', '~> 5.0'
 
   target 'SportsTests' do
     inherit! :search_paths
