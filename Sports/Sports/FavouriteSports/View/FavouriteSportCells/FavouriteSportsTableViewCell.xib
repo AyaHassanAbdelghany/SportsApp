@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="112" id="h5E-T2-C5h" customClass="FavouriteSportsTableViewCell" customModule="Sports" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="112"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="h5E-T2-C5h" id="RHj-5E-WTa">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="112"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="mry-M1-DZX">
+                        <rect key="frame" x="0.0" y="5" width="112" height="102"/>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tZu-qm-Jzl">
+                        <rect key="frame" x="112" y="0.0" width="168" height="112"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xdl-Eq-n1Z">
+                        <rect key="frame" x="280" y="0.0" width="40" height="112"/>
+                        <color key="tintColor" systemColor="systemRedColor" red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <state key="normal" image="play.rectangle.fill" catalog="system"/>
+                        <connections>
+                            <action selector="btnYoutube:" destination="h5E-T2-C5h" eventType="touchUpInside" id="d3k-yf-aq9"/>
+                        </connections>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="xdl-Eq-n1Z" firstAttribute="top" secondItem="RHj-5E-WTa" secondAttribute="top" id="22i-Ha-g3t"/>
+                    <constraint firstAttribute="bottom" secondItem="xdl-Eq-n1Z" secondAttribute="bottom" id="D7g-qL-i9l"/>
+                    <constraint firstItem="xdl-Eq-n1Z" firstAttribute="leading" secondItem="tZu-qm-Jzl" secondAttribute="trailing" id="FKx-hD-zjh"/>
+                    <constraint firstAttribute="trailing" secondItem="xdl-Eq-n1Z" secondAttribute="trailing" id="UB5-Tm-3ec"/>
+                    <constraint firstItem="tZu-qm-Jzl" firstAttribute="leading" secondItem="mry-M1-DZX" secondAttribute="trailing" id="V1E-gN-L1P"/>
+                    <constraint firstItem="mry-M1-DZX" firstAttribute="leading" secondItem="RHj-5E-WTa" secondAttribute="leading" id="XCT-hh-v6l"/>
+                    <constraint firstAttribute="bottom" secondItem="mry-M1-DZX" secondAttribute="bottom" constant="5" id="dYu-fu-zoG"/>
+                    <constraint firstItem="tZu-qm-Jzl" firstAttribute="top" secondItem="RHj-5E-WTa" secondAttribute="top" id="ddF-nw-V87"/>
+                    <constraint firstItem="mry-M1-DZX" firstAttribute="top" secondItem="RHj-5E-WTa" secondAttribute="top" constant="5" id="j1T-qE-GXe"/>
+                    <constraint firstAttribute="bottom" secondItem="tZu-qm-Jzl" secondAttribute="bottom" id="zwR-3c-spu"/>
+                </constraints>
+            </tableViewCellContentView>
+            <constraints>
+                <constraint firstItem="mry-M1-DZX" firstAttribute="width" secondItem="h5E-T2-C5h" secondAttribute="height" multiplier="1:1" id="Q8I-4t-AIF"/>
+                <constraint firstItem="tZu-qm-Jzl" firstAttribute="width" secondItem="h5E-T2-C5h" secondAttribute="height" multiplier="1.5" id="WKj-Ag-6gE"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="TZd-0j-i8q"/>
+            <connections>
+                <outlet property="imageLeague" destination="mry-M1-DZX" id="WZx-Lz-xNl"/>
+                <outlet property="leagueName" destination="tZu-qm-Jzl" id="O3g-mK-cry"/>
+            </connections>
+            <point key="canvasLocation" x="-46" y="77"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="play.rectangle.fill" catalog="system" width="64" height="48"/>
+    </resources>
+</document>

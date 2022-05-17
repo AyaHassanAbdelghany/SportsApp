@@ -29,13 +29,14 @@ class AllSportsViewController: UIViewController,UICollectionViewDelegateFlowLayo
         self.collectionSports.dataSource = self
         
         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
-        layout.sectionInset = UIEdgeInsets(top: 10, left: 0, bottom: 10, right: 0)
+        layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 10, right: 0)
          layout.itemSize = CGSize(width: (collectionSports.frame.width) / 2 , height: (collectionSports.frame.width / 4) )
         layout.minimumInteritemSpacing = 0
          layout.minimumLineSpacing = 0
          collectionSports!.collectionViewLayout = layout
-        allSportsPresenter = AllSportsPresenter(networkManager: NetworkManager())
         
+        
+        allSportsPresenter = AllSportsPresenter(networkManager: NetworkManager())
         allSportsPresenter.attachView(view :self)
         allSportsPresenter.getAllSports()
     }
@@ -65,11 +66,17 @@ extension AllSportsViewController:UICollectionViewDelegate,UICollectionViewDataS
         
                 
         cell.nameSport.text = sports[indexPath.row].strSport
-        cell.imageSport.kf.setImage(with :URL(string: sports[indexPath.row].strSportThumb!),placeholder :UIImage(named:"car.jpg"))
+        cell.imageSport.kf.setImage(with :URL(string: sports[indexPath.row].strSportThumb!),placeholder :UIImage(named:"sportDefault.jpg"))
 
         return cell
     }
     
-
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+        let leaguesVC = storyboard.instantiateViewController(withIdentifier:"leagues") as? LeaguesViewController
+        leaguesVC?.leagueName = sports[indexPath.row].strSport
+       navigationController?.pushViewController(leaguesVC!, animated: true)
+    }
     
    }

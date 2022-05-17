@@ -10,7 +10,7 @@ import Foundation
 
 class AllSportsPresenter :AllSportsPresenterProtocol{
     
-     var sports :[Sport]!
+    var sports :[Sport]!
     var networkManager :NetworkManagerProtocol
      var allSportsView : AllSportsViewProtocal!
     

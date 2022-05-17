@@ -14,8 +14,10 @@ protocol LeaguesProtocol : AnyObject{
     func reloadUpcomingEventsCollectionView()
     func reloadTeamsCollectionView()
 }
+
 class LeaguesDetails: UIViewController, UICollectionViewDataSource , UICollectionViewDelegate,UICollectionViewDelegateFlowLayout {
     
+    var league  = League()
     let indicator = UIActivityIndicatorView(style: .large)
     @IBOutlet weak var upcomingEvents: UICollectionView!
     
@@ -32,6 +34,7 @@ class LeaguesDetails: UIViewController, UICollectionViewDataSource , UICollectio
     var events = [Event]()
     var teamsArr = [Team]()
     var sports = [Sport]()
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if(collectionView == upcomingEvents ){
             return detailsPresenter.getUpcomingEventCount()

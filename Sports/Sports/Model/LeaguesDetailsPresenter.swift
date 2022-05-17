@@ -13,6 +13,7 @@ class LeaguesDetailsPresenter : LeaguesDetailsProtocol{
     var teams : [Team]?
     var networkManager :NetworkManagerProtocol
     weak var view : LeaguesProtocol!
+    
     init(networkManager : NetworkManagerProtocol) {
         self.networkManager = networkManager
         

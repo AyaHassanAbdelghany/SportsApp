@@ -9,7 +9,6 @@
 import Foundation
 protocol LeaguesDetailsProtocol {
     func getEvents()
-    
     func getTeams()
 
 }

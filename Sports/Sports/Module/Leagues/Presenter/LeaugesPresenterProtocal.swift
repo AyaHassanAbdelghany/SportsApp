@@ -10,6 +10,7 @@ import Foundation
 
 protocol LeaguePresenterProtocol{
     
-    func getLeagues(sport:String)
+    func getLeagues(leagueName:String)
+    func attachView(view :LeaguesViewProtocal)
 
 }

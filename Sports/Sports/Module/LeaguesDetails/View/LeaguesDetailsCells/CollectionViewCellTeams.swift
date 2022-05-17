@@ -10,8 +10,6 @@ import UIKit
 
 class CollectionViewCellTeams: UICollectionViewCell {
 
-    
-    
     @IBOutlet weak var teamsImg: UIImageView!
     override func awakeFromNib() {
         super.awakeFromNib()
