@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14903" systemVersion="19D76" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="16119" systemVersion="19D76" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Leagues" representedClassName="Leagues" syncable="YES" codeGenerationType="class">
+        <attribute name="idLeague" optional="YES" attributeType="String"/>
+        <attribute name="isFavorite" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="leagueImage" optional="YES" attributeType="String"/>
         <attribute name="leagueName" optional="YES" attributeType="String"/>
         <attribute name="leagueYoutube" optional="YES" attributeType="String"/>
+        <attribute name="strCountry" optional="YES" attributeType="String"/>
+        <attribute name="strSport" optional="YES" attributeType="String"/>
     </entity>
     <elements>
-        <element name="Leagues" positionX="-63" positionY="-18" width="128" height="88"/>
+        <element name="Leagues" positionX="-63" positionY="-18" width="128" height="148"/>
     </elements>
 </model>

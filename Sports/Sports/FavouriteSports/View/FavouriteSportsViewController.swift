@@ -12,18 +12,22 @@ import Network
 
 
 protocol FavouriteSportsViewProtocal {
-    
-    func renderTableView(leagues:[League])
+    //func renderTableView(leagues:[League])
+    func renderTableView()
 }
 class FavouriteSportsViewController: UIViewController {
 
     @IBOutlet var favouriteSportTable: UITableView!
     var favouritePresenter :FavouritePresenterProtocol!
      var favleagues = [League]()
-    
+    override func viewWillAppear(_ animated: Bool) {
+        favleagues = favouritePresenter.getLFavLeagues()
+        renderTableView()
+        print(favleagues.count)
+
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
-
         self.favouriteSportTable.register(UINib(nibName: "FavouriteSportsTableViewCell", bundle: nil), forCellReuseIdentifier: "favouriteCell")
         self.favouriteSportTable.delegate = self
         self.favouriteSportTable.dataSource = self
@@ -31,8 +35,7 @@ class FavouriteSportsViewController: UIViewController {
         favouritePresenter = FavouritePresenter(dbManager: DBManager())
         favouritePresenter.attachView(view :self)
         
-        favleagues = favouritePresenter.getLFavLeagues()
-        print(favleagues.count)
+        
     }
     
 }
@@ -40,8 +43,8 @@ class FavouriteSportsViewController: UIViewController {
 
 
 extension FavouriteSportsViewController : FavouriteSportsViewProtocal{
-    func renderTableView(leagues: [League]) {
-        favouriteSportTable.reloadData()
+    func renderTableView() {
+        self.favouriteSportTable.reloadData()
     }
     
 }
@@ -93,7 +96,7 @@ extension FavouriteSportsViewController :UITableViewDelegate,UITableViewDataSour
        }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if(!Constaint.checkNetwork()){
+        if(Constaint.checkNetwork()){
                        self.ShowAlert()
             
         }
@@ -117,5 +120,6 @@ extension FavouriteSportsViewController :UITableViewDelegate,UITableViewDataSour
            self.present(alert, animated: true, completion: nil)
        }
     
-       
+      
+         
 }

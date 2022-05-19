@@ -16,5 +16,7 @@ struct League :Decodable{
         var strYoutube : String?
         var strBadge: String?
        var strCountry :String?
+    var strCurrentSeason :String?
+    var isFavorite : Bool?
          
 }
