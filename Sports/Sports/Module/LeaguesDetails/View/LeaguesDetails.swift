@@ -31,7 +31,6 @@ class LeaguesDetails: UIViewController, UICollectionViewDataSource , UICollectio
     }
     
     var league  = League()
-    var favPresenter : FavouriteSportsViewProtocal?
 
     
     @IBOutlet weak var favouritButton: UIButton!
@@ -77,16 +76,11 @@ class LeaguesDetails: UIViewController, UICollectionViewDataSource , UICollectio
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let eventCell = upcomingEvents.dequeueReusableCell(withReuseIdentifier: CollectionViewCellUpComingEventsID, for : indexPath ) as! CollectionViewCellUpComingEvents
         let event = detailsPresenter.getUpcomingEventWithIndex(index: indexPath.row)
-     //   eventCell.img.image = UIImage(named: "up_coming")
         eventCell.img.kf.setImage(with: URL(string: event.strThumb ?? "" ), placeholder: UIImage(named: "background"))
         eventCell.eventName.text = event.strEvent
         eventCell.eventDate.text = event.dateEvent
         eventCell.eventTime.text = event.strTime
-//        if (collectionView == latestResult){
-//            let cell2 = latestResult.dequeueReusableCell(withReuseIdentifier: "cell2" , for : indexPath ) as! CollectionViewCellResults
-//            cell2.backgroundColor = UIColor.blue
-//            return cell2
-//        }
+
         if(collectionView == teams){
             let teamsCell = teams.dequeueReusableCell(withReuseIdentifier: CollectionViewCellTeamsID, for : indexPath) as! CollectionViewCellTeams
             let team = detailsPresenter.getTeamsWithIndex(index: indexPath.row)
@@ -111,8 +105,6 @@ class LeaguesDetails: UIViewController, UICollectionViewDataSource , UICollectio
  
     override func viewDidLoad() {
         super.viewDidLoad()
-        favPresenter = FavouriteSportsViewController()
-        print(league.isFavorite)
         indicator.center = self.view.center
          self.view.addSubview(indicator)
          indicator.startAnimating()
