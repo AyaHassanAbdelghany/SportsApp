@@ -22,6 +22,8 @@ class CollectionViewCellResult: UICollectionViewCell {
     
     @IBOutlet weak var matchTime: UILabel!
     override func awakeFromNib() {
+        resultImg.clipsToBounds = true
+        resultImg.layer.cornerRadius = 20
         super.awakeFromNib()
         // Initialization code
     }

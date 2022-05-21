@@ -17,19 +17,15 @@
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="iaI-Dn-Tyn">
-                        <rect key="frame" x="34" y="0.0" width="80" height="75"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="75" id="5xd-yW-rS3"/>
-                            <constraint firstAttribute="width" constant="80" id="zsa-v8-GX4"/>
-                        </constraints>
+                        <rect key="frame" x="0.0" y="0.0" width="192" height="75"/>
                     </imageView>
                 </subviews>
             </view>
             <constraints>
-                <constraint firstItem="iaI-Dn-Tyn" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="1VC-Fv-lsV"/>
-                <constraint firstAttribute="bottom" secondItem="iaI-Dn-Tyn" secondAttribute="bottom" id="9Xq-Wv-xUf"/>
-                <constraint firstItem="iaI-Dn-Tyn" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="34" id="cel-8o-jJw"/>
-                <constraint firstAttribute="trailing" secondItem="iaI-Dn-Tyn" secondAttribute="trailing" constant="78" id="vpK-su-s7i"/>
+                <constraint firstItem="iaI-Dn-Tyn" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="6Ge-Pd-Lzg"/>
+                <constraint firstAttribute="bottom" secondItem="iaI-Dn-Tyn" secondAttribute="bottom" id="h8F-9r-RrR"/>
+                <constraint firstAttribute="trailing" secondItem="iaI-Dn-Tyn" secondAttribute="trailing" id="ql8-MB-pmm"/>
+                <constraint firstItem="iaI-Dn-Tyn" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="thG-ir-gga"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="192" height="75"/>

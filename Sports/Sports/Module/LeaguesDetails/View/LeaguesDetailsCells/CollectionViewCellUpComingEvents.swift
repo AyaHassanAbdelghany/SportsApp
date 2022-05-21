@@ -18,6 +18,9 @@ class CollectionViewCellUpComingEvents: UICollectionViewCell {
     
     @IBOutlet weak var eventTime: UILabel!
     override func awakeFromNib() {
+        img.clipsToBounds = true
+        img.layer.cornerRadius = 20
+
         super.awakeFromNib()
         // Initialization code
     }

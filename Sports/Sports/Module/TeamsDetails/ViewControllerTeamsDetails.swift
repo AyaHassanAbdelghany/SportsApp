@@ -17,11 +17,15 @@ class ViewControllerTeamsDetails: UIViewController {
     @IBOutlet weak var teamName: UILabel!
     
     @IBOutlet weak var teamDesc: UITextView!
+    
+    @IBOutlet weak var badgeImg: UIImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
         teamName.text = team?.strTeam
         teamDesc.text = team?.strDescriptionEN
         teamsImg.kf.setImage(with: URL(string: team?.strStadiumThumb ?? "" ), placeholder: UIImage(named: "std"))
+        badgeImg.kf.setImage(with: URL(string: team?.strTeamBadge ?? "" ))
+        
 
         // Do any additional setup after loading the view.
     }
