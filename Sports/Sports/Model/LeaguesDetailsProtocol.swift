@@ -8,7 +8,7 @@
 
 import Foundation
 protocol LeaguesDetailsProtocol {
-    func getLatestEvents(leagueID :String)
+    func getEvents(leagueID :String) 
     func getTeams(sportType :String,country: String)
 
 }

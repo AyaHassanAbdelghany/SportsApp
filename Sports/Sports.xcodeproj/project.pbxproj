@@ -51,6 +51,7 @@
 		EA7D909F282EE9A600075ACE /* CollectionViewCellTeams.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7D909D282EE9A600075ACE /* CollectionViewCellTeams.swift */; };
 		EA7D90A0282EE9A600075ACE /* CollectionViewCellTeams.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA7D909E282EE9A600075ACE /* CollectionViewCellTeams.xib */; };
 		EA7D90A3282EEB5A00075ACE /* Team.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7D90A2282EEB5A00075ACE /* Team.swift */; };
+		EA8FAA7C28386C7900AAB992 /* ViewControllerTeamsDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA8FAA7B28386C7900AAB992 /* ViewControllerTeamsDetails.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -115,6 +116,7 @@
 		EA7D909D282EE9A600075ACE /* CollectionViewCellTeams.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCellTeams.swift; sourceTree = "<group>"; };
 		EA7D909E282EE9A600075ACE /* CollectionViewCellTeams.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CollectionViewCellTeams.xib; sourceTree = "<group>"; };
 		EA7D90A2282EEB5A00075ACE /* Team.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Team.swift; sourceTree = "<group>"; };
+		EA8FAA7B28386C7900AAB992 /* ViewControllerTeamsDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerTeamsDetails.swift; sourceTree = "<group>"; };
 		F85D109B6C24E5A1B20D89D9 /* Pods_Sports.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Sports.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -259,6 +261,7 @@
 		2D6C5C94282F098F006409B8 /* Module */ = {
 			isa = PBXGroup;
 			children = (
+				EA8FAA7D283881AD00AAB992 /* TeamsDetails */,
 				2D6C5C9C282F0A2A006409B8 /* Leagues */,
 				2D6C5C95282F09B8006409B8 /* AllSports */,
 				EA7D90A9282F042400075ACE /* LeaguesDetails */,
@@ -399,6 +402,14 @@
 				EA65ECCD282FE61600641A56 /* LeaguesDetailsPresenter.swift */,
 			);
 			path = Presenter;
+			sourceTree = "<group>";
+		};
+		EA8FAA7D283881AD00AAB992 /* TeamsDetails */ = {
+			isa = PBXGroup;
+			children = (
+				EA8FAA7B28386C7900AAB992 /* ViewControllerTeamsDetails.swift */,
+			);
+			path = TeamsDetails;
 			sourceTree = "<group>";
 		};
 		FE6E0F05D5221EF845EA3B1A /* Pods */ = {
@@ -616,6 +627,7 @@
 				EA7D90A3282EEB5A00075ACE /* Team.swift in Sources */,
 				2D5A941528306E4B00F36D70 /* LeaguesViewController.swift in Sources */,
 				2D6C5CA8282F0B20006409B8 /* Sport.swift in Sources */,
+				EA8FAA7C28386C7900AAB992 /* ViewControllerTeamsDetails.swift in Sources */,
 				2D6C5CB4282F3A3F006409B8 /* AllLeauges.swift in Sources */,
 				2D6117F5282D5F17003C53DF /* SceneDelegate.swift in Sources */,
 			);

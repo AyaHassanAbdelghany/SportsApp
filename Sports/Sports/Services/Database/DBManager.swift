@@ -80,7 +80,7 @@ class DBManager :DBManagerProtocal{
                     }
     
                         }catch{
-               print("Couldn't delete movie!")
+               print("Couldn't delete league!")
            }
     }
     

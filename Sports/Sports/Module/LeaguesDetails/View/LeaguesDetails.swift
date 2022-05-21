@@ -18,6 +18,8 @@ protocol LeaguesProtocol : AnyObject{
 
 class LeaguesDetails: UIViewController, UICollectionViewDataSource , UICollectionViewDelegate,UICollectionViewDelegateFlowLayout {
     var flag : Bool = false
+    var selectedIndexPath: IndexPath?
+
 
     @IBAction func favoritePressed(_ sender: UIButton) {
         switchFavorite(button: sender)
@@ -63,32 +65,51 @@ class LeaguesDetails: UIViewController, UICollectionViewDataSource , UICollectio
         return detailsPresenter.getLatestEventCount()
     }
     
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-//        let inset:CGFloat = 10
-//        return UIEdgeInsets(top: inset, left: inset, bottom: inset, right: inset)
-//    }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        let inset:CGFloat = 10
+        return UIEdgeInsets(top: inset, left: inset, bottom: inset, right: inset)
+    }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+        return CGSize(width: UIScreen.main.bounds.width, height: 150)
         
     }
-    
-    
+
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath){
+           switch collectionView {
+              case teams:
+        let detailsTeamsVC = self.storyboard?.instantiateViewController(withIdentifier:"teamsDetails") as? ViewControllerTeamsDetails
+        detailsTeamsVC?.team = teamsArr[indexPath.row]
+        present(detailsTeamsVC!, animated: true, completion: nil)
+            break
+            default:
+            break
+        }
+        
+    }
+          
+       
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let eventCell = upcomingEvents.dequeueReusableCell(withReuseIdentifier: CollectionViewCellUpComingEventsID, for : indexPath ) as! CollectionViewCellUpComingEvents
+        if(detailsPresenter.getUpcomingEventCount()>0){
         let event = detailsPresenter.getUpcomingEventWithIndex(index: indexPath.row)
         eventCell.img.kf.setImage(with: URL(string: event.strThumb ?? "" ), placeholder: UIImage(named: "background"))
         eventCell.eventName.text = event.strEvent
         eventCell.eventDate.text = event.dateEvent
         eventCell.eventTime.text = event.strTime
-
+        }
         if(collectionView == teams){
             let teamsCell = teams.dequeueReusableCell(withReuseIdentifier: CollectionViewCellTeamsID, for : indexPath) as! CollectionViewCellTeams
+            if(detailsPresenter.getTeamsCount()>0){
             let team = detailsPresenter.getTeamsWithIndex(index: indexPath.row)
-            teamsCell.teamsImg.kf.setImage(with: URL(string: team.strTeamBadge ?? "" ))
+                teamsCell.teamsImg.kf.setImage(with: URL(string: team.strTeamBadge ?? "" ))
+                teamsArr.append(team)
+            }
+            
             return teamsCell
         }
         if (collectionView == latestResult){
             let resultCell = latestResult.dequeueReusableCell(withReuseIdentifier: CollectionViewCellResultID, for: indexPath) as! CollectionViewCellResult
+            if(detailsPresenter.getLatestEventCount()>0){
             let result = detailsPresenter.getLatestEventWithIndex(index: indexPath.row)
             resultCell.resultTeams.text = result.strEvent
             resultCell.homeScore.text = result.intHomeScore
@@ -96,8 +117,8 @@ class LeaguesDetails: UIViewController, UICollectionViewDataSource , UICollectio
             resultCell.date.text = result.dateEvent
             resultCell.matchTime.text = result.strTime
             resultCell.resultImg.image = UIImage(named: "result")
+            }
             return resultCell
-            
         }
         return eventCell
         
@@ -121,8 +142,7 @@ class LeaguesDetails: UIViewController, UICollectionViewDataSource , UICollectio
             layout.scrollDirection = .horizontal
         }
         
-        detailsPresenter.getComingEvents(leagueID: (league.idLeague)!)
-        detailsPresenter.getLatestEvents(leagueID: (league.idLeague)!)
+        detailsPresenter.getEvents(leagueID: (league.idLeague)!)
         detailsPresenter.getTeams(sportType: league.strSport!, country: league.strCountry!)
         
         
@@ -164,6 +184,8 @@ class LeaguesDetails: UIViewController, UICollectionViewDataSource , UICollectio
             print(flag)
             
         }
+ 
+    
         
         
     }

@@ -15,8 +15,9 @@ protocol Favorites
 class LeaguesDetailsPresenter : LeaguesDetailsProtocol , Favorites {
     var favLeague: League
     var dbService : DBManagerProtocal?
-    var latestEvents :[Event]?
-    var comingEvents :[Event]?
+    var latestEvents :[Event]?  = []
+    var comingEvents :[Event]?  = []
+    var resultApi :[Event]?
     var teams : [Team]?
     var networkManager :NetworkManagerProtocol
     weak var view : LeaguesProtocol!
@@ -32,27 +33,31 @@ class LeaguesDetailsPresenter : LeaguesDetailsProtocol , Favorites {
           self.view = view
       }
     
-    func getLatestEvents(leagueID :String) {
-          networkManager.fetchResponse(endUrl: "eventsseason.php", httpMethod: .get, parametrs: ["id":leagueID]) { [weak self] (result:Result<AllEvents, Error>) in
-                           switch result {
-                            case .success(let response):
-                                self?.latestEvents = response.events ?? []
-                             print("successfull fetching latest result")
-                          DispatchQueue.main.async {
-                            self?.view.reloadLatestEventsCollectionView()
-                            self?.view.stopAnimating()
-                                  }
-                           case .failure(let error):
-                               print(error.localizedDescription)
-                           }
-                       }
-    }
-    func getComingEvents(leagueID :String) {
+    func getEvents(leagueID :String) {
         networkManager.fetchResponse(endUrl: "eventsseason.php", httpMethod: .get, parametrs: ["id":leagueID ]) { [weak self] (result:Result<AllEvents, Error>) in
                            switch result {
                             case .success(let response):
-                                self?.comingEvents = response.events ?? []
+                                self?.resultApi = response.events ?? []
+                                var count = self?.resultApi?.count ?? 0
+                                print(count)
+                                for i in stride(from: 0, to: count, by: 1){
+                                    if (self?.compareDate(eventDate: self?.resultApi?[i].dateEvent ??
+                                        "")=="upcoming"){
+                                        var e = self?.resultApi?[i]
+                                        
+                                        self?.comingEvents?.append(e!)
+                                       
+                                        
+                                    }else{
+
+                                        self?.latestEvents?.append((self?.resultApi?[i])!)
+                                
+                                    }
+                                }
+                                 print((self?.comingEvents?.count)!)
+                                print((self?.latestEvents?.count)!)
                              print("successfull fetching comming events ")
+                                
                           DispatchQueue.main.async {
                             self?.view.reloadUpcomingEventsCollectionView()
                             self?.view.stopAnimating()
@@ -79,7 +84,7 @@ class LeaguesDetailsPresenter : LeaguesDetailsProtocol , Favorites {
                      }
     }
     func getUpcomingEventWithIndex(index: Int) -> Event {
-        return self.comingEvents?[index] ?? Event()
+            return  self.comingEvents?[index] ?? Event()
     }
     
     func getUpcomingEventCount() -> Int {
@@ -115,4 +120,26 @@ class LeaguesDetailsPresenter : LeaguesDetailsProtocol , Favorites {
         guard let objToBeDeleted = dbService?.searchForLeague(favLeague.strLeague ?? "") else { print ("Not Found"); return }
         dbService?.deleteObject(objToBeDeleted)
     }
+    
+    func compareDate(eventDate:String)->String{
+         var comparedValue = ""
+        let date = Date()
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        let currentDate = dateFormatter.string(from: date)
+        if eventDate.compare(currentDate) == .orderedSame {
+                  comparedValue = "same"
+               }
+               else if eventDate.compare(currentDate) == .orderedAscending{
+                   comparedValue = "latest"
+               }
+               else if eventDate.compare(currentDate) == .orderedDescending{
+                   comparedValue = "upcoming"
+               }
+        else{
+            comparedValue = "none"
+        }
+        return comparedValue
+    }
+    
 }
