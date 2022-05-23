@@ -10,6 +10,7 @@ import UIKit
 
 class AllSportsCollectionViewCell: UICollectionViewCell {
     
+    @IBOutlet var viewSport: UIView!
     @IBOutlet var nameSport: UILabel!
     @IBOutlet var imageSport: UIImageView!
 }

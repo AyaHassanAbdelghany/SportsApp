@@ -11,24 +11,45 @@ import XCTest
 
 class SportsTests: XCTestCase {
 
-    override func setUp() {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-    }
-
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
-
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
+       var networkManager : NetworkManagerProtocol = NetworkManager()
+        
+        override func setUp() {
+            // Put setup code here. This method is called before the invocation of each test method in the class.
         }
+
+        override func tearDown() {
+            // Put teardown code here. This method is called after the invocation of each test method in the class.
+        }
+        
+        func testGetAllSports() {
+            let expectaion = expectation(description: "Waiting for the API")
+            networkManager.fetchResponse(endUrl: "all_sports.php", httpMethod: .get, parametrs: [:]) { (result:Result<AllSports, Error>) in
+                switch result {
+                case .success(let response):
+                    print(response.sports as Any)
+                    XCTAssertEqual(response.sports?.count, 34, "API Faild")
+                    expectaion.fulfill()
+                case .failure( _):
+                    XCTFail()
+                }
+            }
+            waitForExpectations(timeout: 5, handler: nil)
+        }
+        
+        func testGetLeagues() {
+            let expectaion = expectation(description: "Waiting for the API")
+            networkManager.fetchResponse(endUrl: "search_all_leagues.php", httpMethod: .get, parametrs: ["s":"Soccer"]) { (result:Result<AllLeagues, Error>) in
+                switch result {
+                case .success(let response):
+                    print(response.countries as Any)
+                    XCTAssertEqual(response.countries?.count, 10, "API Faild")
+                    expectaion.fulfill()
+                case .failure( _):
+                    XCTFail()
+                }
+            }
+            waitForExpectations(timeout: 5, handler: nil)
+        }
+
     }
 
-}

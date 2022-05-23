@@ -54,12 +54,12 @@ class DBManager :DBManagerProtocal{
                 league.strLeague = item.value(forKey: "leagueName") as? String
                 league.strBadge = item.value(forKey: "leagueImage") as? String
                 league.strYoutube = item.value(forKey: "leagueYoutube") as? String
-                    league.isFavorite = item.value(forKey: "isFavorite") as? Bool
-                    league.idLeague = item.value(forKey: "idLeague")
+                league.isFavorite = item.value(forKey: "isFavorite") as? Bool
+                league.idLeague = item.value(forKey: "idLeague")
                     as? String
-                    league.strCountry = item.value(forKey: "strCountry")
+                league.strCountry = item.value(forKey: "strCountry")
                     as? String
-                    league.strSport = item.value(forKey: "strSport")
+                league.strSport = item.value(forKey: "strSport")
                     as? String
                 leagues.append(league)
                       }

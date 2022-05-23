@@ -15,7 +15,7 @@ protocol DBManagerProtocal{
     func insertLeague(league:League)
     func getLeague()-> [League]
    func deleteLeague(indexPath: Int)
-      func searchForLeague(_ queryStr : String) -> NSManagedObject?
+    func searchForLeague(_ queryStr : String) -> NSManagedObject?
     func deleteObject(_ object : NSManagedObject)
     
 }

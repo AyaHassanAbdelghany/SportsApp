@@ -13,19 +13,20 @@ import Network
 protocol LeaguesViewProtocal {
     
     func renderTableView(leagues:[League])
+    func setLeagueName(leagueName :String)
 }
 
 class LeaguesViewController: UIViewController{
 
      var leaguesPresenter :LeaguePresenterProtocol!
     var leagues = [League]()
-    var leagueName :String?
+    private var name: String?
+
     
     @IBOutlet var leagueTable: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
+                
         self.leagueTable.register(UINib(nibName: "LeagueTableViewCell", bundle: nil), forCellReuseIdentifier: "leagueCell")
         self.leagueTable.delegate = self
         self.leagueTable.dataSource = self
@@ -33,13 +34,17 @@ class LeaguesViewController: UIViewController{
         
         leaguesPresenter = LeaguePresenter(networkManager: NetworkManager())
         leaguesPresenter.attachView(view :self)
-        leaguesPresenter.getLeagues(leagueName: leagueName!)
+        leaguesPresenter.getLeagues(leagueName: name!)
     }
 
 }
 
 
 extension LeaguesViewController :LeaguesViewProtocal{
+    func setLeagueName(leagueName: String) {
+        name = leagueName
+    }
+    
     func renderTableView(leagues:[League]) {
         self.leagues = leagues
         self.leagueTable.reloadData()
@@ -65,7 +70,7 @@ extension LeaguesViewController :UITableViewDelegate,UITableViewDataSource{
         let youtubeUrl = URL(string:"https://"+self.leagues[indexPath.row].strYoutube!)
        
         cell.openYoutube = {
-            if(Constaint.checkNetwork()){
+            if(!Constaint.flagNetwork){
                 self.ShowAlert()}
             else{
         if UIApplication.shared.canOpenURL(youtubeUrl! ){
@@ -98,7 +103,7 @@ extension LeaguesViewController :UITableViewDelegate,UITableViewDataSource{
     }
    
      func ShowAlert(){
-           let alert = UIAlertController(title: "Sorry", message: "No Internt Connection ,you cann't open youtube without internet.", preferredStyle: .alert)
+           let alert = UIAlertController(title: "Sorry", message: "No Internt Connection ", preferredStyle: .alert)
            let cancelBtn = UIAlertAction(title: "Cancel", style: .default, handler: nil)
            alert.addAction(cancelBtn)
            self.present(alert, animated: true, completion: nil)

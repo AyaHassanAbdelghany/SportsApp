@@ -67,7 +67,7 @@ extension FavouriteSportsViewController :UITableViewDelegate,UITableViewDataSour
         let youtubeUrl = URL(string:"https://"+self.favleagues[indexPath.row].strYoutube!)
        
         cell.openYoutube = {
-            if(Constaint.checkNetwork()){
+            if(!Constaint.flagNetwork){
                 self.ShowAlert()}
             else{
         if UIApplication.shared.canOpenURL(youtubeUrl! ){
@@ -96,9 +96,8 @@ extension FavouriteSportsViewController :UITableViewDelegate,UITableViewDataSour
        }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if(Constaint.checkNetwork()){
-                       self.ShowAlert()
-            
+        if(!Constaint.flagNetwork){
+                self.ShowAlert()
         }
         else{
         let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
@@ -114,7 +113,7 @@ extension FavouriteSportsViewController :UITableViewDelegate,UITableViewDataSour
                 return 108
         }
      func ShowAlert(){
-           let alert = UIAlertController(title: "Sorry", message: "No Internt Connection ,you cann't open youtube without internet.", preferredStyle: .alert)
+           let alert = UIAlertController(title: "Sorry", message: "No Internt Connection ", preferredStyle: .alert)
            let cancelBtn = UIAlertAction(title: "Cancel", style: .default, handler: nil)
            alert.addAction(cancelBtn)
            self.present(alert, animated: true, completion: nil)

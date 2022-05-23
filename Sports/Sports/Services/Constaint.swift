@@ -12,20 +12,21 @@ import Network
 
 class Constaint{
     
-    static func checkNetwork() -> Bool{
+    static var flagNetwork :Bool = true
+    
+    static func checkNetwork(){
               let monitor = NWPathMonitor()
-              var flag: Bool = false
 
-              monitor.pathUpdateHandler = { pathUpdateHandler in
-                  if pathUpdateHandler.status != .satisfied{
-                      flag = true
-                  }else{
-                      flag = false
-                  }
-              }
-              let queue = DispatchQueue(label: "InternetConnectionMonitor")
-              monitor.start(queue: queue)
-              return flag
+                    monitor.pathUpdateHandler = { pathUpdateHandler in
+                        if pathUpdateHandler.status == .satisfied{
+                            flagNetwork = true
+        
+                        }else{
+                            flagNetwork = false
+                        }
+                    }
+                    let queue = DispatchQueue(label: "InternetConnectionMonitor")
+                    monitor.start(queue: queue)
           }
       
 }

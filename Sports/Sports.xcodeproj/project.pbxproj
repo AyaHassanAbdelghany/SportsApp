@@ -153,7 +153,6 @@
 			isa = PBXGroup;
 			children = (
 				2D5A678C2832CDEB0087DFFA /* FavouriteSportCells */,
-				2D5A67882832C7D20087DFFA /* FavouriteSportsViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -261,6 +260,7 @@
 		2D6C5C94282F098F006409B8 /* Module */ = {
 			isa = PBXGroup;
 			children = (
+				2D5A67882832C7D20087DFFA /* FavouriteSportsViewController.swift */,
 				EA8FAA7D283881AD00AAB992 /* TeamsDetails */,
 				2D6C5C9C282F0A2A006409B8 /* Leagues */,
 				2D6C5C95282F09B8006409B8 /* AllSports */,
